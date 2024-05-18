@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+  .open{
+    left: 0;
+    transition: 0.4s;
+  }
+  .close{
+    left: -220px;
+    transition: 0.4s;
+  }
+  .transit{
+    transition: 0.3s;
+  }
+  .greetings{
+    background: linear-gradient( to left,#2193f3,#ccc,#333);
+    background-clip: text;
+    color: transparent;
+
+  }
+  .h{
+    height: 230px;
+  }
+  .Css{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(5px);
+  z-index: 78;
+  }
+  .Cs{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    
+    backdrop-filter: blur(0.5px);
+    z-index: 78;
+    }
+  .ani{
+    animation:updown 2s  infinite ;
+  }
+  @keyframes updown{
+    from{margin-top: 0;} 
+    to{margin-top:5px;}
+  }
+  .alert{
+    animation: ah-see-shege 700ms ease-in-out infinite;
+  }
+  @keyframes ah-see-shege {
+    0%{rotate: 5deg;}
+    25%{rotate: 15deg;}
+    50%{rotate: 20deg;}
+    75%{rotate: 15deg;}
+    100%{rotate: -10deg;}
+  }
+  .Loading{
+    animation: Loading 700ms ease-in-out infinite;
+  }
+  @keyframes Loading {
+    from{rotate: 0;}
+    to{rotate: 360deg;}
+  }
+  .animate{
+    animation: pop 0.5s ease-in ;
+  }
+  @keyframes pop{
+    from{scale: 0;}
+    to{scale: 1;}
+  }
+ .input:focus{
+     outline: 2px solid #cdd;
+ }
+  .perspect{
+    perspective: 100px;
+    
+  }
+  .perspect_child{
+    transform-style: preserve-3d;
+    transform: rotateX('80deg');
+  }
+  @media print {
+    /* Hide the button when printing */
+    .button {
+      display: none;
+    }
+  }
+  .new{
+    background-image: url("../public/images/blockchain.jpg");
+    backdrop-filter: blur(4px);
+  }
+  .greetings{
+    display: inline-block;
+    transform: translateY("4px");
+  }
+  .slideshow-container {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Snap to each image */
+  }
+  
+  .slide {
+    min-width: 100%; /* Ensure each image occupies full width of container */
+    scroll-snap-align: start; /* Snap each image to the start of the container */
+    transition: opacity 0.5s ease; /* Add transition effect */
+  }
+  
+  .slide.active {
+    opacity: 1; /* Display active image */
+    
+  }
+  .slideshow-container img{
+    height: 100%;
+    object-fit: cover;
+  }
