@@ -15,17 +15,46 @@ const getProfile=async(req,res)=>{
 }
  
 //sending user name from server to   the client side
-const getUser=async(req,res)=>{
-    const token=req.cookies.refreshToken
-  try{
-      const decoded= jwt.verify(token,process.env.REFRESH_TOKEN_SECRET,)
-      const user= await data.findById(decoded.id)
-      res.json(user.firstname) 
-  }catch(err){
-    console.log(err)
-      res.status(500).json(err)
-  }   
-}
+const getUser = async (req, res) => {
+  const token = req.cookies.refreshToken;
+
+  if (!token) {
+    return res.status(401).json({ error: 'No token provided' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+    
+    if (!decoded || !decoded.id) {
+      return res.status(401).json({ error: 'Invalid token' });
+    }
+
+    const user = await data.findById(decoded.id);
+    
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.json( user.firstname);
+  } catch (err) {
+    console.error('Error verifying token or fetching user:', err);
+
+    // Check for specific JWT errors
+    if (err.name === 'TokenExpiredError') {
+      return res.status(401).json({ error: 'Token expired' });
+    }
+
+    if (err.name === 'JsonWebTokenError') {
+      return res.status(401).json({ error: 'Invalid token' });
+    }
+
+    // For other errors, return a 500 status
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
+
 const getInitials = async (req, res) => {
     // Extract the refresh token from the cookies sent with the request
     const { refreshToken } = req.cookies;

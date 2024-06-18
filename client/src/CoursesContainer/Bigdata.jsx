@@ -11,9 +11,9 @@ const Bigdata = () => {
     <p>Quiz 2: October 2023,  7:00pm</p>
     <p>Quiz 2: December 2023,  7:00pm</p>
   </div>
-    <BigdataData link='/BigDataWk1File' name='File' week={1} info='one' desc='Intro to Big Data' icon={<FileOutlined />}/>
-    <BigdataData link='/BigDataWk2File' name='File' week={2} info='two' desc='Annuity cost' icon={<FileOutlined />}/>
-    <BigdataData link='/BigDataWk3File' name='File' week={3} info='three' desc='Variables' icon={<FileOutlined />}/>
+    <BigdataData link='/Courses/BigData/BigDataWk1File' name='File' week={1} info='one' desc='Intro to Big Data' icon={<FileOutlined />}/>
+    <BigdataData link='/Courses/BigData/BigDataWk2File' name='File' week={2} info='two' desc='Annuity cost' icon={<FileOutlined />}/>
+    <BigdataData link='/Courses/BigData/BigDataWk3File' name='File' week={3} info='three' desc='Variables' icon={<FileOutlined />}/>
     <BigdataData link='' name='File' week={4} info='four' desc='Functions' icon={<FileOutlined />}/>
     <BigdataData link='' name='File' week={5} info='five' desc='Loops in programming' icon={<FileOutlined />}/>
     <BigdataData link='' name='File' week={6} info='six' desc='Object and object destructuring' icon={<FileOutlined />}/>

@@ -24,7 +24,7 @@ const handSubmit = async(e)=>{
             alert('user already exist') 
         }else{
              alert('Sign up successfully')
-            navigate('/')
+            navigate('/Login')
         }
 
       })

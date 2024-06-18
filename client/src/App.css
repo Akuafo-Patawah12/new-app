@@ -118,3 +118,42 @@
     height: 100%;
     object-fit: cover;
   }
+  
+  .log::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background-color: #2193f3;
+    z-index: -1;
+    transition: 800ms;
+  }
+  .log:hover::before{
+    width: 100%;
+  }
+  .sign::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%,-50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: #2193f3;
+    z-index: -1;
+    transition: 800ms;
+  }
+  .sign:hover::before{
+    width:150px;
+    height: 150px;
+  }
+  .hidden{
+    display: none;
+  }
+  .block{
+    display: block;
+  }

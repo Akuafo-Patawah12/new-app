@@ -10,9 +10,9 @@ const BusinessFinance = () => {
         <p>Quiz 1: March 2023,  5:00pm</p>
         <p>Quiz 2: October 2023,  7:00pm</p>
       </div>
-        <BusinessFinanceData link='/BusinessFinanceWk1File' name='File' week={1} desc='Intro to Business Finance' icon={<FileOutlined />}/>
-        <BusinessFinanceData link='/BusinessFinanceWk2File' name='File' week={2} desc='Annuity cost' icon={<FileOutlined />}/>
-        <BusinessFinanceData link='/BusinessFinanceWk3File' name='File' week={3} desc='Variables' icon={<FileOutlined />}/>
+        <BusinessFinanceData link='/Courses/BusinessFinance/BusinessFinanceWk1File' name='File' week={1} desc='Intro to Business Finance' icon={<FileOutlined />}/>
+        <BusinessFinanceData link='/Courses/BusinessFinance/BusinessFinanceWk2File' name='File' week={2} desc='Annuity cost' icon={<FileOutlined />}/>
+        <BusinessFinanceData link='/Courses/BusinessFinance/BusinessFinanceWk3File' name='File' week={3} desc='Variables' icon={<FileOutlined />}/>
         <BusinessFinanceData link='/' name='File' week={4} desc='Functions' icon={<FileOutlined />}/>
         <BusinessFinanceData link='/' name='File' week={5} desc='Loops in programming' icon={<FileOutlined />}/>
         <BusinessFinanceData link='/' name='File' week={6} desc='Object and object destructuring' icon={<FileOutlined />}/>

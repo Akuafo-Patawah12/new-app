@@ -11,10 +11,10 @@ const Database = () => {
         <p>Quiz 2: October 2023,  7:00pm</p>
         <p>Quiz 3: November 2023,  3:00pm</p>
       </div>
-        <DBMSdata link='/DatabaseWk1File' name='File' info='Definitions of databases and ER diagrams' week={1} desc='Intro to databases' icon={<FileOutlined />} />
-        <DBMSdata link='/DatabaseWk2File' name='File' info='MySQl editor installment.' week={2} desc='SQL set up' icon={<FileOutlined />} />
-        <DBMSdata link='/DatabaseWk3File'  name='File' info='How to create databases and how to query them' week={3} desc='Creating my new database file' icon={<FileOutlined  />} />
-        <DBMSdata link='/DbsubFile' name='Quiz' info='Quiz will be set from topics from week one to week 3,' week={4} desc='' icon={<BarChartOutlined />}/>
+        <DBMSdata link='/Courses/DatabaseWk1File' name='File' info='Definitions of databases and ER diagrams' week={1} desc='Intro to databases' icon={<FileOutlined />} />
+        <DBMSdata link='/Courses/DatabaseWk2File' name='File' info='MySQl editor installment.' week={2} desc='SQL set up' icon={<FileOutlined />} />
+        <DBMSdata link='/Courses/DatabaseWk3File'  name='File' info='How to create databases and how to query them' week={3} desc='Creating my new database file' icon={<FileOutlined  />} />
+        <DBMSdata link='/Courses/Db4subFile' name='Quiz' info='Quiz will be set from topics from week one to week 3,' week={4} desc='' icon={<BarChartOutlined />}/>
         <DBMSdata link='' name='File' info='information' week={5} desc='' icon={<PieChartTwoTone />} />
         <DBMSdata link='' name='URL' info='information' week={6} desc='' icon={<LinkOutlined />} />
         <DBMSdata link='' name='Quiz' info='information' week={7} desc='' icon={<PieChartTwoTone />} />

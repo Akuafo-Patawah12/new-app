@@ -7,11 +7,10 @@ import Result from '../container/Result';
 import Events from '../container/Events';
 import Profile from '../container/Profile';
 import Prospectus from '../container/Prospectus';
-
 import About from '../container/About';
 import Notification from '../container/Notification';
 import Togglesidebar from '../container/Togglesidebar';
-import { ArrowUpOutlined } from '@ant-design/icons';
+import { ArrowUpOutlined, CloseCircleOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import EventsPopUp from '../container/EventsPopUp';
 import Database from '../CoursesContainer/Database';
 import DatabaseWk1File from '../container/Week1 folder/DatabaseWk1File';
@@ -117,49 +116,87 @@ const Layout = () => {
 const location = useLocation();
 const [log, setLog] = useState(
   location.pathname === "/" ||
+   location.pathname==="/Login" ||
   location.pathname === "/ForgetPassword" || 
   location.pathname === "/ResetPassword:id" 
   || location.pathname==="/SignUp"
 );
 useEffect(() => {
   setLog( location.pathname === "/" ||
+  location.pathname==="/Login" ||
   location.pathname === "/ForgetPassword" || 
   location.pathname === "/ResetPassword:id" 
   || location.pathname.startsWith("/SignUp"));
 }, [location]);
 
+
+const [side, setShowSide] = useState(
+  location.pathname !== "/" &&
+  location.pathname !== "/SignUp" &&
+  location.pathname !== "/ForgetPassword" &&
+  location.pathname !== "/Login" &&
+  !location.pathname.startsWith("/ResetPassword/:id"))
+
+
+useEffect(() => {
+  setShowSide(
+    location.pathname !== "/" &&
+    location.pathname !== "/SignUp" &&
+    location.pathname !== "/ForgetPassword" &&
+    !location.pathname.startsWith("/ResetPassword/:id")
+  );
+}, [location]);
+
+
+const[isLoggedOut, setLoggedOut]= useState(false)
+let notify;
+const[char,setChar]= useState(4)
 const navigate= useNavigate()
 useEffect(() => {
   const fetchData = async () => {
     axios.defaults.withCredentials=true
     try {
-      const response = await axios.get('http://localhost:5010/sessionLogout');
-      if (response.data.message ==="Token Expired") {
-        if(location.pathname ==="/" ||
+      const response = await axios   .get('http://localhost:5010/sessionLogout');
+      if (response.data.message ==="Successfully logged out") {
+        if(!(location.pathname ==="/" ||
          location.pathname ==="/SignUp" ||
          location.pathname ==="/Login" ||
          location.pathname ==="/ResetPassword/:id" ||
-         location.pathname ==="/ForgetPassword"){
-           navigate("/Login");
-        alert('Session logout')
+         location.pathname ==="/ForgetPassword")){
+           timer()
         }
       }
     } catch (error) {
       console.error('API request failed:', error);
     }
+    
   };
+  
+ 
   fetchData()
-
-},[]); 
+  function timer(){
+    notify= setInterval(()=>{
+      setLoggedOut(true)
+      setChar(prev=> prev-1)
+   },1000)
+   navigate("/Login");
+   if(char<=1){
+     setLoggedOut(false)
+     clearInterval(notify)          
+   }
+  
+  }
+  return()=>{clearInterval(notify); }
+},[char]); 
 
   return (
     <div className='flex'>
     
       <SideBarComponent>
-        <aside className='hidden lg:block overflow-y-auto w-1/5  fixed 
+        {side &&<aside className='hidden lg:block overflow-y-auto w-1/5  fixed 
         top-0 bottom-0'>
             <Sidebar />
-        </aside>
+        </aside> }
         </SideBarComponent>
         <ToggleSideBarComponents>
         <aside  ref={sideRef} className={`w-[210px] grid bg-gray-200 z-[60] fixed inset-y-0 
@@ -201,52 +238,55 @@ useEffect(() => {
                 } />
                 {/* database routes */}
                 <Route path='/Courses/Database' element={<Database />} />
-                <Route path='/DatabaseWk1File' element={<DatabaseWk1File/>} />
-                <Route path='/DatabaseWk2File' element={<DatabaseWk2File/>} />
-                <Route path='/DatabaseWk3File' element={<DatabaseWk3File/>} />
-                <Route path='/DatabaseWk4File' element={<DatabaseWk4File/>} />
-                <Route path='/DbsubFile' element={<Db4subFile/>} />
+                <Route path='/Courses/DatabaseWk1File' element={<DatabaseWk1File/>} />
+                <Route path='/Courses/DatabaseWk2File' element={<DatabaseWk2File/>} />
+                <Route path='/Courses/DatabaseWk3File' element={<DatabaseWk3File/>} />
+                <Route path='/Courses/DatabaseWk4File' element={<DatabaseWk4File/>} />
+                <Route path='/Courses/Db4subFile' element={<Db4subFile/>} />
 
                 {/* Business finance routes */}
                
                 <Route path='/Courses/BusinessFinance' element={<BusinessFinance />} />
-                <Route path='/BusinessFinanceWk1File' element={<BusinessFinanceWk1File/>} />
-                <Route path='/BusinessFinanceWk2File' element={<BusinessFinanceWk2File/>} />
-                <Route path='/BusinessFinanceWk3File' element={<BusinessFinanceWk3File/>} />
-                <Route path='/BusinessFinanceWk4File' element={<BusinessFinanceWk4File/>} />
+                <Route path='/Courses/BusinessFinanceWk1File' element={<BusinessFinanceWk1File/>} />
+                <Route path='/Courses/BusinessFinanceWk2File' element={<BusinessFinanceWk2File/>} />
+                <Route path='/Courses/BusinessFinanceWk3File' element={<BusinessFinanceWk3File/>} />
+                <Route path='/Courses/BusinessFinanceWk4File' element={<BusinessFinanceWk4File/>} />
 
                  {/* Business Statistics routes */}
 
                 <Route path='/Courses/BusinessStats' element={<BusinessStats />} />
-                <Route path='/BusStatsWk1File' element={<BusStatsWk1File/>} />
-                <Route path='/BusStatsWk2File' element={<BusStatsWk2File/>} />
-                <Route path='/BusStatsWk3File' element={<BusStatsWk3File/>} />
-                <Route path='/BusStatsWk4File' element={<BusStatsWk4File/>} />
+                <Route path='/Courses/BusStatsWk1File' element={<BusStatsWk1File/>} />
+                <Route path='/Courses/BusStatsWk2File' element={<BusStatsWk2File/>} />
+                <Route path='/Courses/BusStatsWk3File' element={<BusStatsWk3File/>} />
+                <Route path='/Courses/BusStatsWk4File' element={<BusStatsWk4File/>} />
 
                  {/* Programming routes */}
                 <Route path='/Courses/ProgrammingI' element={<ProgammingI />} />
-                <Route path='/ProgrammingWk1File' element={<ProgrammingWk1File />} />
-                <Route path='/ProgrammingWk2File' element={<ProgrammingWk2File/>} />
-                <Route path='/ProgrammingWk3File' element={<ProgrammingWk3File/>} />
+                <Route path='/Courses/ProgrammingWk1File' element={<ProgrammingWk1File />} />
+                <Route path='/Courses/ProgrammingWk2File' element={<ProgrammingWk2File/>} />
+                <Route path='/Courses/ProgrammingWk3File' element={<ProgrammingWk3File/>} />
                 <Route path='/ProgrammingWk4File' element={<ProgrammingWk4File />} />
 
                  {/* Operating systems routes */}
 
                 <Route path='/Courses/OperatingSystems' element={<OperatingSystems />} />
-                <Route path='/OsWk1File' element={<OsWk1File />} />
-                <Route path='/OsWk2File' element={<OsWk2File/>} />
-                <Route path='/OsWk3File' element={<OsWk3File/>} />
-                <Route path='/OsWk4File' element={<OsWk4File/>} />
+                <Route path='/Courses/OsWk1File' element={<OsWk1File />} />
+                <Route path='/Courses/OsWk2File' element={<OsWk2File/>} />
+                <Route path='/Courses/OsWk3File' element={<OsWk3File/>} />
+                <Route path='/Courses/OsWk4File' element={<OsWk4File/>} />
 
                  {/* BigData routes */} 
 
-                <Route path='/Bigdata' element={<Bigdata />} />
-                <Route path='/BigDataWk1File' element={<BigDataWk1File />} />
-                <Route path='/BigDataWk2File' element={<BigDataWk2File />} />
-                <Route path='/BigDataWk3File' element={<BigDataWk3File />} />
-                <Route path='/BigDataWk4File' element={<BigDataWk4File />} />
+                <Route path='/Courses/Bigdata' element={<Bigdata />} />
+                <Route path='/Courses/BigDataWk1File' element={<BigDataWk1File />} />
+                <Route path='/Courses/BigDataWk2File' element={<BigDataWk2File />} />
+                <Route path='/Courses/BigDataWk3File' element={<BigDataWk3File />} />
+                <Route path='/Courses/BigDataWk4File' element={<BigDataWk4File />} />
               
             </Routes>
+            {isLoggedOut &&<span className='absolute flex py-2 items-center gap-1 bg-red-100 border-2 border-red-200 top-[15%] left-[50%] -translate-x-[50%] -translate-y-[50%]'>
+               <ExclamationCircleOutlined/> Request timeout, stay logged in. {char} <button><CloseCircleOutlined /></button>
+            </span> }
 
             {showButton && <div  onClick={handClick} 
             className='fixed cursor-pointer grid place-items-center z-2 bg-blue-300 
@@ -258,9 +298,7 @@ useEffect(() => {
             </EventsPopUp>}
             <ProfileEdit>
                <h1>ProfileEdit</h1>
-            </ProfileEdit>
-             
-            
+            </ProfileEdit>  
         </main>
     </div>
   )

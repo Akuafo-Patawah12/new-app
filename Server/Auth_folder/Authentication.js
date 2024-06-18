@@ -46,6 +46,13 @@ const data= require('../DatabaseModels/User')
     }catch(err){
        res.status(404).json(err) //Console 404 error message if server crashes
     }}
+
+
+
+
+
+
+    
 // Register a new user 
 const SignUp =async(req,res)=>{
     const {firstname,lastname,email,Index_Number,Programme,auth,password }= req.body.formData
@@ -88,7 +95,7 @@ const SignUp =async(req,res)=>{
             // Check if the refresh token is missing
             if (!refreshToken) {
                 // If verification succeeds, delete the refresh token from cookies
-                res.clearCookie('refreshToken').json({ message: 'Token Expired' }); 
+                res.clearCookie('refreshToken').json({ message: 'Successfully logged out' }); 
             }
         } catch (err) {
             // Handle token verification error
@@ -96,6 +103,7 @@ const SignUp =async(req,res)=>{
             res.status(401).json({ error: 'Failed to logout' });
         }
     };
+    
 module.exports= {
    login,SignUp,logout,sessionLogout
 };

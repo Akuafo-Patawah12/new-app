@@ -25,7 +25,7 @@ const Togglesidebar = ({toggle}) => {
             sessionStorage.removeItem('names')
             localStorage.removeItem('ini')
             localStorage.removeItem('programme')
-            navigate('/')
+            navigate('/Login')
            
        }else{
         alert(res.data.Message)

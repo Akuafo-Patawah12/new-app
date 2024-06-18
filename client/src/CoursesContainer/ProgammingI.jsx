@@ -12,9 +12,9 @@ const ProgammingI = () => {
         <p>Quiz 3: November 2023,  3:00pm</p>
         <p>Quiz 4: November 2023,  5:30pm</p>
       </div>
-        <Programmingi_Data link='/ProgrammingWk1File' name='File' week={1} desc='Fundamentals of programming' icon={<FileOutlined />}/>
-        <Programmingi_Data link='/ProgrammingWk2File' name='File' week={2} desc='Setting up a code editor' icon={<FileOutlined />}/>
-        <Programmingi_Data link='/ProgrammingWk3File' name='File' week={3} desc='Variables' icon={<FileOutlined />}/>
+        <Programmingi_Data link='/Courses/ProgammingI/ProgrammingWk1File' name='File' week={1} desc='Fundamentals of programming' icon={<FileOutlined />}/>
+        <Programmingi_Data link='/Courses/ProgammingI/ProgrammingWk2File' name='File' week={2} desc='Setting up a code editor' icon={<FileOutlined />}/>
+        <Programmingi_Data link='/Courses/ProgammingI/ProgrammingWk3File' name='File' week={3} desc='Variables' icon={<FileOutlined />}/>
         <Programmingi_Data link='/' name='File' week={4} desc='Functions' icon={<FileOutlined />}/>
         <Programmingi_Data link='/' name='File' week={5} desc='Loops in programming' icon={<FileOutlined />}/>
         <Programmingi_Data link='/' name='File' week={6} desc='Object and object destructuring' icon={<FileOutlined />}/>

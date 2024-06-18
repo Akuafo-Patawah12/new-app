@@ -21,27 +21,22 @@ const Body = () => {
       }   
     }
     
-  
-    
-  
-  
-
     //const navigate= useNavigate()
   
-     
-
     const storedNames = sessionStorage.getItem('names'); 
   const [ names,setName ]= useState(storedNames||"");
   axios.defaults.withCredentials=true
-  useEffect(()=>{
-    axios.get('http://localhost:5010/getUser')
-    .then(res=> {
-      const newName= res.data
-      setName(newName)
-      sessionStorage.setItem('names', newName);
-    }) 
-    .catch(err=> console.log(err))
-  },[names])
+  useEffect(() => {
+    if (!storedNames) {
+      axios.get('http://localhost:5010/getUser')
+        .then(res => {
+          const newName = res.data;
+          setName(newName);
+          sessionStorage.setItem('names', newName);
+        })
+        .catch(err => console.log(err));
+    }
+  }, []);
     
   useEffect(()=>{
     axios.defaults.withCredentials=true
